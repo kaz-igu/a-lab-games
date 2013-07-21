@@ -4,8 +4,11 @@ runtime: python27
 api_version: 1
 threadsafe: no
 
-
 handlers:
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
 - url: /template
   script: web/template/(.html)
 

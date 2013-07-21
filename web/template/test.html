@@ -35,7 +35,7 @@
       {% if greeting.author %}
         <b>{{ greeting.author.nickname }}</b> wrote:
       {% else %}
-       An anonymous person wrote:
+       Guest wrote:
       {% endif %}
       <blockquote>{{ greeting.content|escape }}</blockquote>
     {% endfor %}
