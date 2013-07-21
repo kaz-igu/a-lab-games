@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/css/common.css" />
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+    <script type="text/javascript">
+    var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
+    if (document.location.protocol == 'https:')
+      unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
+    document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
+    </script>
+    <script type='text/javascript' src='/js/unity.js'></script>
+  </head>
+  <body>
+
+    {# unity #}
+    <div class="content">
+      <div id="unityPlayer">
+        <div class="missing">
+          <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+            <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+          </a>
+        </div>
+        <div class="broken">
+          <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install.">
+            <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+          </a>
+        </div>
+      </div>
+    </div>
+    {# unity End #}
+
+
+    {# BBS #}
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author.nickname }}</b> wrote:
+      {% else %}
+       An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content|escape }}</blockquote>
+    {% endfor %}
+
+    <form action="/sign" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Sign Guestbook"></div>
+    </form>
+
+    <a href="{{ url }}" style="color:red;">{{ url_linktext }}</a>
+    {# BBS End #}
+
+
+
+  </body>
+</html>

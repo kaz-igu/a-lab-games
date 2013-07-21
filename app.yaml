@@ -2,16 +2,24 @@ application: a-lab-games
 version: 1
 runtime: python27
 api_version: 1
-threadsafe: yes
+threadsafe: no
 
 
 handlers:
-- url: /favicon\.ico
-  static_files: web/static/image/favicon.ico
-  upload: web/static/image/favicon\.ico
+- url: /template
+  script: web/template/(.html)
 
-- url: /
-  static_files: web/test.html
-  upload: /
-- url: /
-  static_dir: web
+- url: /css
+  static_dir: web/static/css
+
+- url: /unity
+  static_dir: web/static/unity
+
+- url: /image
+  static_dir: web/static/image
+
+- url: /js
+  static_dir: web/static/js
+
+- url: /.*
+  script: main.py
